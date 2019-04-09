@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: ZendroidThemes
- * Description: A collection of shortcodes, functions, snippets and other enhancements to our Wordpress themes
+ * Description: A collection of shortcodes, functions, snippets, widgets and other enhancements to our Wordpress themes
  * Plugin URI: http://www.zendroidthemes.com
  * Author: Jason Devine
  * Author URI: http://www.zendroidthemes.com

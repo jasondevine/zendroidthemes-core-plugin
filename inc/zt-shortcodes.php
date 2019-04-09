@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: ZendroidThemes
- * Description: A collection of shortcodes, functions, snippets and other enhancements to our Wordpress themes
+ * Description: A collection of shortcodes, functions, snippets, widgets and other enhancements to our Wordpress themes
  * Plugin URI: http://www.zendroidthemes.com
  * Author: Jason Devine
  * Author URI: http://www.zendroidthemes.com
@@ -66,27 +66,6 @@ function zt_get_author_shortcode() {
 	return '<div class="author-name">' . $name . '</div>';
 }
 
-function zt_breakout_image_shortcode($atts, $content = null) {
-    extract( shortcode_atts( array(
-    'name' => '',
-    'align' => 'right',
-    'ext' => 'jpg',
-    'path' => '/wp-content/uploads/',
-    'url' => ''
-    ), $atts ) );
-    $file=ABSPATH."$path$name.$ext";
-    if (file_exists($file)) {
-        $size=getimagesize($file);
-        if ($size!==false) $size=$size[3];
-        $output = "<figure class='breakout-image-single'><img src='".get_option('siteurl')."$path$name.$ext' alt='$name' $size align='$align' class='align$align' /></figure>";
-        if ($url) $output = "<a href='$url' title='$name'>".$output.'</a>';
-        return $output;
-    }
-    else {
-        trigger_error("'$path$name.$ext' image not found", E_USER_WARNING);
-        return '';
-    }
-}
 
 function zt_secondary_logo_embed_shortcode() {
     $secondary_logo = get_theme_mod( 'zendroidPress-secondary-logo' ); 
@@ -94,14 +73,16 @@ function zt_secondary_logo_embed_shortcode() {
 }
 
 
-
+function zt_superscript($atts, $content = null) {
+    return '<sup>' . $content . '</sup>';
+}
 
 function register_shortcodes() {
 
 add_shortcode('dummy-content', 'zt_dummy_content_shortcode' );
 add_shortcode( 'the-author', 'zt_get_author_shortcode' );
-add_shortcode( 'breakout-image', 'zt_breakout_image_shortcode' );
 add_shortcode( 'secondary-logo', 'zt_secondary_logo_embed_shortcode' );
+add_shortcode( 'superscript', 'zt_superscript');
 
 }
 
